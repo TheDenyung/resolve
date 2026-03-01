@@ -1,6 +1,8 @@
 plugins {
   id("com.android.application")
   id("org.jetbrains.kotlin.android")
+  id("jacoco")
+  id("org.jlleitschuh.gradle.ktlint")
 }
 
 android {
@@ -34,6 +36,10 @@ android {
     targetCompatibility = JavaVersion.VERSION_17
   }
 
+  testOptions {
+    unitTests.isReturnDefaultValues = true
+  }
+
   kotlinOptions {
     jvmTarget = "17"
   }
@@ -59,4 +65,32 @@ dependencies {
   // Layout components used across screens
   implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
   implementation("androidx.recyclerview:recyclerview:1.3.2")
+
+  // Unit testing
+  testImplementation("junit:junit:4.13.2")
+  testImplementation("io.mockk:mockk:1.13.16")
+  testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
+  testImplementation("org.json:json:20231013")
+}
+
+// ── JaCoCo coverage reporting ───────────────────────────────────────────
+
+tasks.register<JacocoReport>("jacocoTestReport") {
+  dependsOn("testDebugUnitTest")
+
+  reports {
+    xml.required.set(true)
+    html.required.set(true)
+  }
+
+  val debugTree = fileTree("${layout.buildDirectory.get()}/tmp/kotlin-classes/debug") {
+    exclude("**/R.class", "**/R\$*.class", "**/BuildConfig.class")
+  }
+  val mainSrc = "${project.projectDir}/src/main/java"
+
+  sourceDirectories.setFrom(files(mainSrc))
+  classDirectories.setFrom(files(debugTree))
+  executionData.setFrom(fileTree(layout.buildDirectory) {
+    include("jacoco/testDebugUnitTest.exec")
+  })
 }

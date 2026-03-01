@@ -1971,7 +1971,7 @@ class AgentLoop(
     /**
      * Derive the tool function name from an AgentAction (fallback when LLM response lacks it).
      */
-    private fun toolNameFromAction(action: AgentAction): String = when (action) {
+    internal fun toolNameFromAction(action: AgentAction): String = when (action) {
         is AgentAction.TypeMessage -> "type_message"
         is AgentAction.ClickElement -> "click_element"
         is AgentAction.ScrollDown -> "scroll_down"
@@ -1987,7 +1987,7 @@ class AgentLoop(
     /**
      * Derive the tool arguments JSON from an AgentAction (fallback).
      */
-    private fun toolArgsFromAction(action: AgentAction): String = when (action) {
+    internal fun toolArgsFromAction(action: AgentAction): String = when (action) {
         is AgentAction.TypeMessage -> {
             val escapedText = action.text.replace("\"", "\\\"")
             if (action.elementId != null) {
@@ -2063,7 +2063,7 @@ class AgentLoop(
         }
     }
 
-    private fun describeAction(action: AgentAction): String {
+    internal fun describeAction(action: AgentAction): String {
         return when (action) {
             is AgentAction.TypeMessage -> "Type message: \"${action.text.take(60)}${if (action.text.length > 60) "..." else ""}\""
             is AgentAction.ClickElement -> {
@@ -2095,7 +2095,7 @@ class AgentLoop(
      * - Terminal: auth failures (401/403), model not found (404), quota exceeded, invalid request
      * - Retryable: rate limits (429), server errors (5xx), timeouts, network errors
      */
-    private fun classifyLLMError(e: Exception): LLMErrorClass {
+    internal fun classifyLLMError(e: Exception): LLMErrorClass {
         val msg = e.message ?: ""
 
         return when {
@@ -2164,7 +2164,7 @@ class AgentLoop(
 }
 
 /** Classification of an LLM error for retry decisions. */
-private data class LLMErrorClass(
+internal data class LLMErrorClass(
     val retryable: Boolean,
     val userMessage: String,
 )

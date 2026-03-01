@@ -711,7 +711,7 @@ class LLMClient(private val config: LLMConfig) {
         }
     }
 
-    private fun parseToolCallFromJson(name: String, input: JSONObject): AgentAction {
+    internal fun parseToolCallFromJson(name: String, input: JSONObject): AgentAction {
         return when (name) {
             "type_message" -> AgentAction.TypeMessage(
                 text = input.optString("text", ""),
@@ -779,7 +779,7 @@ class LLMClient(private val config: LLMConfig) {
      * Parse an element ID from a JSON field, handling both int and string representations.
      * LLMs may return `"elementId": 42` or `"elementId": "42"`.
      */
-    private fun parseElementId(input: JSONObject, key: String): Int? {
+    internal fun parseElementId(input: JSONObject, key: String): Int? {
         if (!input.has(key)) return null
         return try {
             val raw = input.get(key)
