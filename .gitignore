@@ -23,3 +23,6 @@ coverage/
 # Claude Code
 .claude/*
 !.claude/rules/
+
+# Analysis scripts
+analyze-codebase.sh
